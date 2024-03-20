@@ -21,9 +21,9 @@
         </div>
       </div>
     </form>
-    <ul class="row" id="list">
-      <li>DEV-104</li>
-      <li>DEV-103</li>
+    <ul class="row row-cols-1" id="list">
+      <li class="col">DEV-104</li>
+      <li class="col">DEV-103</li>
     </ul>
   </div>
 
@@ -52,6 +52,7 @@
       } else {
         // Create a new list item
         const newItem = document.createElement('li');
+        newItem.className = 'col';
         newItem.textContent = group;
         list.appendChild(newItem);
         // Clear input
