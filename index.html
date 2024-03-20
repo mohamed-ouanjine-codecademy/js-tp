@@ -28,13 +28,13 @@
   <script>
     function ajouter() {
   const input = document.getElementById('gr');
-  const group = input.value.toLowerCase()
+  const group = input.value;
   const list = document.getElementById('list');
   const elements = list.children;
 
   let isExist = false;
   for (let element of elements) {
-    if (element.textContent.trim().toLowerCase() === group) {
+    if (element.textContent.trim().toLowerCase() === group.toLowerCase()) {
       isExist = true;
       break;
     }
