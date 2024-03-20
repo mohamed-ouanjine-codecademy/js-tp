@@ -9,49 +9,55 @@
 </head>
 
 <body>
-  <form class="container">
-    <div class="row row-cols-1 g-2 mb-3">
-      <div class="col">
-        <label class="form-label" for="gr">Group:</label>
-        <input class="form-control" type="text" id="gr" />
+  <div class="container">
+    <form id="form" class="row">
+      <div class="row row-cols-1 g-2 mb-3">
+        <div class="col">
+          <label class="form-label" for="gr">Group:</label>
+          <input class="form-control" type="text" id="gr" />
+        </div>
+        <div class="col">
+          <input class="btn btn-primary" type="submit" value="ajouter" />
+        </div>
       </div>
-      <div class="col">
-        <input class="btn btn-primary" type="button" value="ajouter" onclick="ajouter()" />
-      </div>
-    </div>
+    </form>
     <ul class="row" id="list">
       <li>DEV-104</li>
       <li>DEV-103</li>
     </ul>
-  </form>
+  </div>
 
   <script>
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      ajouter();
+    });
+
     function ajouter() {
-  const input = document.getElementById('gr');
-  const group = input.value;
-  const list = document.getElementById('list');
-  const elements = list.children;
+      const input = document.getElementById('gr');
+      const group = input.value;
+      const list = document.getElementById('list');
+      const elements = list.children;
 
-  let isExist = false;
-  for (let element of elements) {
-    if (element.textContent.trim().toLowerCase() === group.trim().toLowerCase()) {
-      isExist = true;
-      break;
+      let isExist = false;
+      for (let element of elements) {
+        if (element.textContent.trim().toLowerCase() === group.trim().toLowerCase()) {
+          isExist = true;
+          break;
+        }
+      }
+
+      if (isExist) {
+        alert('Item already exists.');
+      } else {
+        // Create a new list item
+        const newItem = document.createElement('li');
+        newItem.textContent = group;
+        list.appendChild(newItem);
+        // Clear input
+        input.value = '';
+      }
     }
-  }
-
-  if (isExist) {
-    alert('Item already exists.');
-  } else {
-    // Create a new list item
-    const newItem = document.createElement('li');
-    newItem.textContent = group;
-    list.appendChild(newItem);
-    // clear input
-    input.value = '';
-  }
-}
-
   </script>
 </body>
 
